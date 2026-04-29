@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera, Eye, Bot, Activity } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import awsLogo from "@/assets/aws-logo.svg";
@@ -131,45 +131,139 @@ const Index = () => {
         <div className="absolute inset-0 bg-accent-glow" />
 
         <div className="container mx-auto px-6 relative z-10 py-20">
-          <div className="max-w-4xl animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="font-mono text-xs uppercase tracking-widest text-foreground">Ottawa · Aug 21–22, 2026</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left — Title & CTA */}
+            <div className="animate-fade-up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span className="font-mono text-xs uppercase tracking-widest text-foreground">Ottawa · Aug 21–22, 2026</span>
+              </div>
+
+              <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
+
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
+                COMMUNITY DAY
+              </h1>
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2">
+                OTTAWA
+              </h2>
+              <p className="text-base md:text-lg font-medium text-muted-foreground tracking-wide mb-6">
+                <span className="text-accent font-semibold">Co-located with the DevOps for GenAI Hackathon</span>
+              </p>
+
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
+                A two-day gathering of cloud builders, DevOps engineers, and AI innovators exploring the future of platform engineering and GenAI delivery.
+              </p>
+
+              <div className="flex flex-wrap gap-6 text-sm font-mono text-muted-foreground mb-10">
+                <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent" /> {EVENT_DATE}</span>
+                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {VENUE}</span>
+                <span className="flex items-center gap-2"><Users className="w-4 h-4 text-accent" /> Community-driven</span>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow">
+                  <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
+                    Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" className="text-base h-14 px-8 bg-background/20 backdrop-blur-sm border border-accent/50 shadow-[0_0_15px_rgba(146,119,255,0.15)] hover:shadow-[0_0_25px_rgba(146,119,255,0.3)] hover:border-accent/80 hover:bg-accent/10 transition-all duration-300">
+                  <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
+                    Join the Hackathon <Code2 className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
-            <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
+            {/* Right — GenAI + DevOps Platform Visual */}
+            <div className="hidden md:flex items-center justify-center relative">
+              <div className="relative w-80 h-96 lg:w-[26rem] lg:h-[30rem]">
+                {/* Background glow */}
+                <div className="absolute inset-0 bg-accent/5 rounded-3xl blur-3xl animate-[pulse_4s_ease-in-out_infinite]" />
+                <div className="absolute inset-12 bg-primary/8 rounded-full blur-2xl animate-[pulse_3s_ease-in-out_infinite_1s]" />
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
-              COMMUNITY DAY
-            </h1>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2">
-              OTTAWA
-            </h2>
-            <p className="text-base md:text-lg font-medium text-muted-foreground tracking-wide mb-6">
-              In <span className="text-accent font-semibold">Collaboration with DevOps for GenAI Hackathon Series</span>
-            </p>
+                {/* Center node: GenAI Platform */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="relative">
+                    <div className="absolute -inset-6 rounded-full border border-accent/15 animate-[pulse_3s_ease-in-out_infinite]" />
+                    <div className="absolute -inset-3 rounded-full border border-primary/25 animate-[pulse_2.5s_ease-in-out_infinite_0.5s]" />
+                    <div className="absolute -inset-10 rounded-full bg-accent/5 blur-xl animate-[pulse_4s_ease-in-out_infinite]" />
+                    <div className="w-22 h-22 w-[5.5rem] h-[5.5rem] rounded-2xl bg-gradient-primary flex items-center justify-center shadow-[0_0_30px_rgba(146,119,255,0.3)] relative animate-[pulse_3s_ease-in-out_infinite]">
+                      <Sparkles className="w-10 h-10 text-primary-foreground" />
+                    </div>
+                    <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-accent/80 whitespace-nowrap">GenAI Platform</span>
+                  </div>
+                </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
-              Join us for a dynamic AWS Community Day co-located with a hands-on DevOps & GenAI Hackathon where builders, engineers, and technology leaders come together to explore the future of cloud and AI-powered delivery.
-            </p>
+                {/* Top: Code */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 animate-[float_6s_ease-in-out_infinite]">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(146,119,255,0.1)]">
+                    <Code2 className="w-6 h-6 text-accent" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-accent/60 mt-1.5 text-center">Code</span>
+                </div>
 
-            <div className="flex flex-wrap gap-6 text-sm font-mono text-muted-foreground mb-10">
-              <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent" /> {EVENT_DATE}</span>
-              <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {VENUE}</span>
-              <span className="flex items-center gap-2"><Users className="w-4 h-4 text-accent" /> Community-driven</span>
-            </div>
+                {/* Top-right: Agents */}
+                <div className="absolute top-[18%] right-2 animate-[float_5s_ease-in-out_infinite_0.8s]">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+                    <Bot className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-primary/60 mt-1.5 text-center">Agents</span>
+                </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow">
-                <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                  Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-base h-14 px-8 border-foreground/20 bg-background/30 backdrop-blur-sm hover:bg-foreground/10">
-                <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
-                  Join the Hackathon
-                </a>
-              </Button>
+                {/* Right: Inference */}
+                <div className="absolute top-[45%] right-0 animate-[float_7s_ease-in-out_infinite_1.5s]">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(146,119,255,0.1)]">
+                    <Zap className="w-6 h-6 text-accent" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-accent/60 mt-1.5 text-center">Inference</span>
+                </div>
+
+                {/* Bottom-right: Observe */}
+                <div className="absolute bottom-[18%] right-4 animate-[float_6.5s_ease-in-out_infinite_0.5s]">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+                    <Eye className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-primary/60 mt-1.5 text-center">Observe</span>
+                </div>
+
+                {/* Bottom: Deploy */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-[float_5.5s_ease-in-out_infinite_1s]">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+                    <Rocket className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-primary/60 mt-1.5 text-center">Deploy</span>
+                </div>
+
+                {/* Bottom-left: Scale */}
+                <div className="absolute bottom-[18%] left-4 animate-[float_6s_ease-in-out_infinite_2s]">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 backdrop-blur-sm flex items-center justify-center shadow-[0_0_15px_rgba(146,119,255,0.1)]">
+                    <Activity className="w-6 h-6 text-accent" />
+                  </div>
+                  <span className="block font-mono text-[9px] text-accent/60 mt-1.5 text-center">Scale</span>
+                </div>
+
+                {/* Connecting lines — animated left-to-right shimmer */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
+                  {/* Code to center */}
+                  <line x1="50%" y1="15%" x2="50%" y2="40%" stroke="rgba(146,119,255,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_1.5s_linear_infinite]" />
+                  {/* Agents to center */}
+                  <line x1="78%" y1="25%" x2="58%" y2="43%" stroke="rgba(99,102,241,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_1.8s_linear_infinite_0.3s]" />
+                  {/* Inference to center */}
+                  <line x1="82%" y1="50%" x2="60%" y2="50%" stroke="rgba(146,119,255,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_2s_linear_infinite_0.6s]" />
+                  {/* Observe to center */}
+                  <line x1="78%" y1="75%" x2="58%" y2="57%" stroke="rgba(99,102,241,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_1.7s_linear_infinite_0.9s]" />
+                  {/* Deploy to center */}
+                  <line x1="50%" y1="85%" x2="50%" y2="60%" stroke="rgba(99,102,241,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_1.5s_linear_infinite_1.2s]" />
+                  {/* Scale to center */}
+                  <line x1="22%" y1="75%" x2="42%" y2="57%" stroke="rgba(146,119,255,0.2)" strokeWidth="1" strokeDasharray="4 3" className="animate-[dash_1.9s_linear_infinite_1.5s]" />
+                </svg>
+
+                {/* Shimmer particles */}
+                <div className="absolute top-[20%] left-[30%] w-1 h-1 rounded-full bg-accent/60 animate-[shimmer_3s_ease-in-out_infinite]" />
+                <div className="absolute top-[60%] right-[25%] w-1 h-1 rounded-full bg-primary/60 animate-[shimmer_3s_ease-in-out_infinite_1s]" />
+                <div className="absolute bottom-[35%] left-[40%] w-1 h-1 rounded-full bg-accent/40 animate-[shimmer_3s_ease-in-out_infinite_2s]" />
+              </div>
             </div>
           </div>
         </div>

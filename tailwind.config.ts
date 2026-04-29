@@ -80,6 +80,28 @@ export default {
             height: "0",
           },
         },
+        flowDown: {
+          "0%": { top: "8%", opacity: "0" },
+          "10%": { opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { top: "88%", opacity: "0" },
+        },
+        fadeSlideIn: {
+          "0%": { opacity: "0", transform: "translateX(-50%) translateY(-10px)" },
+          "100%": { opacity: "1", transform: "translateX(-50%) translateY(0)" },
+        },
+        dash: {
+          "0%": { strokeDashoffset: "8" },
+          "100%": { strokeDashoffset: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        shimmer: {
+          "0%, 100%": { opacity: "0", transform: "scale(0.5)" },
+          "50%": { opacity: "1", transform: "scale(1.5)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
