@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+import awsLogo from "@/assets/aws-logo.svg";
+
 
 const galleryImages = Object.values(
   import.meta.glob("@/assets/gallery/*.jpg", { eager: true, import: "default" })
 ) as string[];
 
 const CONF_URL = "https://www.eventbrite.com/e/aws-community-day-ottawa-tickets-1987796160827";
+const COMMUNITY_DAY_LABEL = "Community Day";
 const HACK_URL = "https://www.eventbrite.com/e/devops-for-genai-hackathon-ottawa-2026-tickets-1984872192158";
 const VENUE = "Invest Ottawa, 7 Bayview Rd, Ottawa, ON";
 const EVENT_DATE = "August 21–22, 2026";
@@ -99,7 +102,7 @@ const Index = () => {
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
         <nav className="container mx-auto flex items-center justify-between py-4 px-6">
           <a href="#top" className="font-mono text-sm tracking-tight">
-            <span className="text-gradient font-bold">AWS_OTT</span>
+            <span className="text-gradient font-bold">awscommunityday</span>
             <span className="text-muted-foreground">/2026</span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -134,11 +137,17 @@ const Index = () => {
               <span className="font-mono text-xs uppercase tracking-widest text-foreground">Ottawa · Aug 21–22, 2026</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
-              AWS Community Day
-              <br />
-              <span className="text-gradient">+ GenAI Hackathon</span>
+            <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
+
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
+              COMMUNITY DAY
             </h1>
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2">
+              OTTAWA
+            </h2>
+            <p className="text-base md:text-lg font-medium text-muted-foreground tracking-wide mb-6">
+              In <span className="text-accent font-semibold">Collaboration with DevOps for GenAI Hackathon Series</span>
+            </p>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
               Join us for a dynamic AWS Community Day co-located with a hands-on DevOps & GenAI Hackathon where builders, engineers, and technology leaders come together to explore the future of cloud and AI-powered delivery.
@@ -153,7 +162,7 @@ const Index = () => {
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow">
                 <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                  Register for Conference <ArrowRight className="ml-2 w-5 h-5" />
+                  Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-base h-14 px-8 border-foreground/20 bg-background/30 backdrop-blur-sm hover:bg-foreground/10">
@@ -205,7 +214,7 @@ const Index = () => {
                   </div>
                   <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Track 01</span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4">Conference</h3>
+                <h3 className="text-3xl font-bold mb-4">Community Day</h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
                   Inspiring talks, real-world case studies, and deep dives into modern AWS architectures, platform engineering, and GenAI in DevOps workflows.
                 </p>
@@ -219,7 +228,7 @@ const Index = () => {
                 </ul>
                 <Button asChild className="bg-gradient-primary hover:opacity-90 border-0 w-full h-12">
                   <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                    Get Conference Ticket <ArrowRight className="ml-2 w-4 h-4" />
+                    Get Community Day Ticket <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
               </div>
@@ -263,19 +272,39 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16">
             <span className="font-mono text-xs uppercase tracking-widest text-accent">03 / Agenda</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4">What the day looks like.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4">What the days look like.</h2>
+            <p className="text-lg text-muted-foreground mt-4">AWS Community Day (Co-located with DevOps for GenAI Hackathon)</p>
           </div>
 
           <div className="max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold mb-8 text-accent">Day 1</h3>
             {[
-              { time: "08:30", title: "Registration & Coffee", desc: "Check in, grab swag, meet fellow builders." },
-              { time: "09:30", title: "Opening Keynote", desc: "Setting the stage for the day ahead." },
-              { time: "10:30", title: "Technical Talks — Cloud & DevOps", desc: "Deep dives from practitioners shipping in production." },
-              { time: "12:30", title: "Lunch & Networking", desc: "Conversations that turn into collaborations." },
-              { time: "13:30", title: "Hackathon Kickoff", desc: "Teams form, problems drop, builds begin." },
-              { time: "15:00", title: "GenAI Track", desc: "What's real, what's hype, and what to build next." },
-              { time: "18:00", title: "Demos & Awards", desc: "Winning teams take the stage." },
-              { time: "19:00", title: "After Party", desc: "You made it. Celebrate with the community." },
+              { time: "09:00", title: "Kick Off", desc: "Welcome and opening remarks." },
+              { time: "09:30", title: "Keynote", desc: "Setting the stage for the day ahead." },
+              { time: "17:00", title: "Community Connect", desc: "Networking and conversations that turn into collaborations." },
+              { time: "17:30", title: "Hackathon Starts", desc: "Teams form, problems drop, builds begin. Teams can leave to work on the solution." },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-6 md:gap-10 group">
+                <div className="flex flex-col items-center">
+                  <div className="font-mono text-sm text-accent pt-1">{item.time}</div>
+                  <div className="w-px flex-1 bg-border mt-4 group-last:hidden" />
+                </div>
+                <div className="flex-1 pb-10 group-last:pb-0">
+                  <div className="relative pl-6 border-l border-border -ml-px pl-10">
+                    <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-gradient-primary -translate-x-1/2 ring-4 ring-background" />
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <h3 className="text-2xl font-bold mb-8 mt-12 text-accent">Day 2</h3>
+            {[
+              { time: "09:00", title: "Teams Return", desc: "Hackathon continues throughout the day." },
+              { time: "09:30", title: "Keynote", desc: "Inspiration and insights to kick off day two." },
+              { time: "10:00", title: "Technical Talks — Cloud & DevOps", desc: "Deep dives from practitioners shipping in production." },
+              { time: "17:30", title: "Talks & Demos", desc: "Hackathon teams present their solutions. Judging and awards." },
             ].map((item, i) => (
               <div key={i} className="flex gap-6 md:gap-10 group">
                 <div className="flex flex-col items-center">
@@ -340,7 +369,7 @@ const Index = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow animate-pulse-glow">
                 <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                  Conference Ticket <ArrowRight className="ml-2 w-5 h-5" />
+                  Community Day Ticket <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-base h-14 px-8 border-accent/40 bg-accent/5 hover:bg-accent/15">
@@ -357,7 +386,7 @@ const Index = () => {
       <footer className="border-t border-border py-12">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <div className="font-mono">
-            <span className="text-gradient font-bold">AWS_OTT</span>/2026 — Community Day + Hackathon
+            <span className="text-gradient font-bold">awscommunityday</span>/2026 — Community Day + GenAI Hackathon
           </div>
           <div>Organized by DevOps + AI Community of Practice · Venue: {VENUE}</div>
         </div>
