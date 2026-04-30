@@ -531,7 +531,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">Interested in speaking? We'd love to hear from you.</p>
             <Button asChild variant="outline" className="border-accent/40 bg-accent/5 hover:bg-accent/15">
-              <a href={`mailto:${SPONSOR_CONTACT_EMAIL}?subject=Speaker%20Proposal%20-%20AWS%20Community%20Day%20Ottawa%202026`}>
+              <a href="https://forms.gle/Fw85zJWMmsjKRRUx8" target="_blank" rel="noopener noreferrer">
                 Submit a Talk Proposal <ArrowRight className="ml-2 w-4 h-4" />
               </a>
             </Button>
