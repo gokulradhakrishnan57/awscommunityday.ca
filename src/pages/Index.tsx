@@ -16,7 +16,7 @@ const VENUE = "Invest Ottawa, 7 Bayview Rd, Ottawa, ON";
 const EVENT_DATE = "August 21–22, 2026";
 
 const SPONSOR_DECK_URL = "/sponsor-deck.pdf";
-const VOLUNTEER_FORM_URL = "https://forms.gle/placeholder-volunteer";
+const VOLUNTEER_FORM_URL = "https://forms.gle/YnbVmSmUGpV6PoFq6";
 const SPONSOR_CONTACT_EMAIL = "info@capitalcarbonconsulting.com";
 
 const SPEAKERS = [
@@ -562,7 +562,7 @@ const Index = () => {
               ))}
             </div>
             <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8">
-              <a href={`mailto:${SPONSOR_CONTACT_EMAIL}?subject=Volunteer%20Interest%20-%20AWS%20Community%20Day%20Ottawa%202026`}>
+              <a href={VOLUNTEER_FORM_URL} target="_blank" rel="noopener noreferrer">
                 Sign Up to Volunteer <Heart className="ml-2 w-5 h-5" />
               </a>
             </Button>
