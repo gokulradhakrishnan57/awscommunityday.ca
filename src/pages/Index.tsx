@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera, Eye, Bot, Activity } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Code2, Users, Trophy, Rocket, Sparkles, Network, Zap, Camera, Eye, Bot, Activity, Heart, Download, Mic } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import awsLogo from "@/assets/aws-logo.svg";
@@ -14,6 +14,19 @@ const COMMUNITY_DAY_LABEL = "Community Day";
 const HACK_URL = "https://www.eventbrite.com/e/devops-for-genai-hackathon-ottawa-2026-tickets-1984872192158";
 const VENUE = "Invest Ottawa, 7 Bayview Rd, Ottawa, ON";
 const EVENT_DATE = "August 21–22, 2026";
+
+const SPONSOR_DECK_URL = "/sponsor-deck.pdf";
+const VOLUNTEER_FORM_URL = "https://forms.gle/placeholder-volunteer";
+const SPONSOR_CONTACT_EMAIL = "info@capitalcarbonconsulting.com";
+
+const SPEAKERS = [
+  { name: "Speaker TBA", role: "Keynote Speaker", company: "Coming Soon", image: "" },
+  { name: "Speaker TBA", role: "Cloud Architect", company: "Coming Soon", image: "" },
+  { name: "Speaker TBA", role: "DevOps Engineer", company: "Coming Soon", image: "" },
+  { name: "Speaker TBA", role: "AI/ML Specialist", company: "Coming Soon", image: "" },
+  { name: "Speaker TBA", role: "Platform Engineer", company: "Coming Soon", image: "" },
+  { name: "Speaker TBA", role: "GenAI Practitioner", company: "Coming Soon", image: "" },
+];
 
 const GalleryCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -111,6 +124,9 @@ const Index = () => {
             <a href="#agenda" className="hover:text-foreground transition-smooth">Agenda</a>
             <a href="#experience" className="hover:text-foreground transition-smooth">Experience</a>
             <a href="#gallery" className="hover:text-foreground transition-smooth">Gallery</a>
+            <a href="#speakers" className="hover:text-foreground transition-smooth">Speakers</a>
+            <a href="#sponsors" className="hover:text-foreground transition-smooth">Sponsors</a>
+            <a href="#volunteers" className="hover:text-foreground transition-smooth">Volunteers</a>
           </div>
           <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 border-0">
             <a href={CONF_URL} target="_blank" rel="noopener noreferrer">Register</a>
@@ -142,9 +158,13 @@ const Index = () => {
               <img src={awsLogo} alt="AWS" className="h-8 md:h-10 mb-6 invert brightness-0 invert opacity-90" />
 
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-2">
-                COMMUNITY DAY
+                COMMUNITY DAY 2026
               </h1>
-              <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2">
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-accent leading-tight mb-2 flex items-center gap-3">
+                <svg viewBox="0 0 40 24" className="w-8 h-5 md:w-10 md:h-6 flex-shrink-0" fill="none">
+                  <path d="M4 16c8 4 20 4 32 0" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M30 12l4 4 2-8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 OTTAWA
               </h2>
               <p className="text-base md:text-lg font-medium text-muted-foreground tracking-wide mb-6">
@@ -152,7 +172,7 @@ const Index = () => {
               </p>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
-                A two-day gathering of cloud builders, DevOps engineers, and AI innovators exploring the future of platform engineering and GenAI delivery.
+                Join us for a dynamic AWS Community Day co-located with a hands-on DevOps & GenAI Hackathon, where builders, engineers, and technology leaders come together to explore the future of cloud and AI-powered delivery.
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm font-mono text-muted-foreground mb-10">
@@ -162,14 +182,15 @@ const Index = () => {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow">
+                <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow animate-pulse-glow relative overflow-hidden">
                   <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]" />
                     Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
                 <Button asChild size="lg" className="text-base h-14 px-8 bg-background/20 backdrop-blur-sm border border-accent/50 shadow-[0_0_15px_rgba(146,119,255,0.15)] hover:shadow-[0_0_25px_rgba(146,119,255,0.3)] hover:border-accent/80 hover:bg-accent/10 transition-all duration-300">
                   <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
-                    Join the Hackathon <Code2 className="ml-2 w-5 h-5" />
+                    Register for Hackathon <Code2 className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
               </div>
@@ -284,6 +305,9 @@ const Index = () => {
               <p>
                 The co-located <span className="text-foreground font-medium">DevOps for GenAI Hackathon</span> gives participants the chance to apply these ideas in real time — building innovative solutions using Cloud services and GenAI tools. Whether you're experimenting with AI-driven automation, enhancing observability, or prototyping next-gen platform capabilities, you'll collaborate, learn from mentors, and push boundaries in a fast-paced environment.
               </p>
+              <p>
+                Whether you're a seasoned cloud architect, DevOps practitioner, or AI enthusiast, this event is your opportunity to connect, learn, and build what's next.
+              </p>
             </div>
           </div>
         </div>
@@ -310,10 +334,10 @@ const Index = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Community Day</h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Inspiring talks, real-world case studies, and deep dives into modern AWS architectures, platform engineering, and GenAI in DevOps workflows.
+                  Inspiring talks, real-world case studies, and collaborative sessions. Dive into modern AWS architectures, platform engineering, and the role of GenAI in DevOps workflows.
                 </p>
                 <ul className="space-y-3 mb-10">
-                  {["Inspiring talks & real-world case studies", "Modern AWS architectures & platform engineering", "AI-driven automation & observability", "Networking with cloud architects & DevOps practitioners"].map((item) => (
+                  {["Inspiring talks & real-world case studies", "Modern AWS architectures & platform engineering", "AI-driven automation & observability", "Connect with cloud architects & technology leaders"].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                       <span>{item}</span>
@@ -322,7 +346,7 @@ const Index = () => {
                 </ul>
                 <Button asChild className="bg-gradient-primary hover:opacity-90 border-0 w-full h-12">
                   <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                    Get Community Day Ticket <ArrowRight className="ml-2 w-4 h-4" />
+                    Register for Community Day <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
               </div>
@@ -340,10 +364,10 @@ const Index = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Hackathon</h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  A weekend of innovation and collaboration — team up to build innovative solutions using Cloud services and GenAI tools in a fast-paced environment.
+                  Get ready to team up and hack the future of DevOps with AI-powered tools in a fun, hands-on challenge! This event is perfect for tech enthusiasts, developers, and anyone interested in the intersection of DevOps and AI.
                 </p>
                 <ul className="space-y-3 mb-10">
-                  {["Team-based hands-on challenge", "Build with Cloud services & GenAI tools", "Learn from mentors & push boundaries", "Live demos, judging & prizes"].map((item) => (
+                  {["Team-based hands-on challenge", "Explore the intersection of DevOps & AI", "Showcase your skills & work on cool projects", "Network with like-minded individuals"].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                       <span>{item}</span>
@@ -352,7 +376,7 @@ const Index = () => {
                 </ul>
                 <Button asChild variant="outline" className="w-full h-12 border-accent/40 bg-accent/5 hover:bg-accent/15 text-foreground">
                   <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
-                    Enter the Hackathon <ArrowRight className="ml-2 w-4 h-4" />
+                    Register for Hackathon <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </Button>
               </div>
@@ -371,11 +395,11 @@ const Index = () => {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold mb-8 text-accent">Day 1</h3>
+            <h3 className="text-2xl font-bold mb-8 text-accent">Day 1 — Friday, August 21</h3>
             {[
-              { time: "09:00", title: "Kick Off", desc: "Welcome and opening remarks." },
-              { time: "09:30", title: "Keynote", desc: "Setting the stage for the day ahead." },
-              { time: "17:00", title: "Community Connect", desc: "Networking and conversations that turn into collaborations." },
+              { time: "16:00", title: "Kickoff", desc: "Welcome and opening remarks." },
+              { time: "16:15", title: "Keynote", desc: "Setting the stage for the weekend ahead." },
+              { time: "17:00", title: "Community Connect & Refreshments", desc: "Networking, conversations, and light refreshments." },
               { time: "17:30", title: "Hackathon Starts", desc: "Teams form, problems drop, builds begin. Teams can leave to work on the solution." },
             ].map((item, i) => (
               <div key={i} className="flex gap-6 md:gap-10 group">
@@ -393,12 +417,16 @@ const Index = () => {
               </div>
             ))}
 
-            <h3 className="text-2xl font-bold mb-8 mt-12 text-accent">Day 2</h3>
+            <h3 className="text-2xl font-bold mb-8 mt-12 text-accent">Day 2 — Saturday, August 22</h3>
             {[
-              { time: "09:00", title: "Teams Return", desc: "Hackathon continues throughout the day." },
+              { time: "09:00", title: "Registration & Coffee", desc: "Check in, grab swag, meet fellow builders." },
               { time: "09:30", title: "Keynote", desc: "Inspiration and insights to kick off day two." },
               { time: "10:00", title: "Technical Talks — Cloud & DevOps", desc: "Deep dives from practitioners shipping in production." },
-              { time: "17:30", title: "Talks & Demos", desc: "Hackathon teams present their solutions. Judging and awards." },
+              { time: "12:00", title: "Lunch & Networking", desc: "Conversations that turn into collaborations." },
+              { time: "16:00", title: "Hackathon Demos", desc: "Teams present their solutions to the judges." },
+              { time: "17:00", title: "Hackathon Ends", desc: "Final submissions and wrap-up." },
+              { time: "17:30", title: "Award Ceremony", desc: "Winning teams take the stage." },
+              { time: "18:00", title: "Closing Remarks", desc: "Thank you and see you next year!" },
             ].map((item, i) => (
               <div key={i} className="flex gap-6 md:gap-10 group">
                 <div className="flex flex-col items-center">
@@ -447,6 +475,101 @@ const Index = () => {
       {/* GALLERY */}
       <GalleryCarousel />
 
+      {/* SPONSORS */}
+      <section id="sponsors" className="py-24 md:py-32 bg-gradient-surface">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">06 / Sponsors</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Become a sponsor.</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+              Partner with us to reach Canada's most engaged cloud and AI community.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8">
+                <a href={SPONSOR_DECK_URL} download>
+                  <Download className="mr-2 w-5 h-5" /> Download Sponsor Deck
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-base h-14 px-8 border-accent/40 bg-accent/5 hover:bg-accent/15">
+                <a href={`mailto:${SPONSOR_CONTACT_EMAIL}?subject=Sponsorship%20Inquiry%20-%20AWS%20Community%20Day%20Ottawa%202026`}>
+                  Contact Us About Sponsorship
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SPEAKERS */}
+      <section id="speakers" className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mb-16">
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">07 / Speakers</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4">Learn from the best.</h2>
+            <p className="text-lg text-muted-foreground mt-4">Industry leaders and community experts sharing real-world insights on AWS, DevOps, and GenAI.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {SPEAKERS.map((speaker, i) => (
+              <div key={i} className="group text-center">
+                <div className="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-border group-hover:border-accent/60 transition-smooth">
+                  {speaker.image ? (
+                    <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-card flex items-center justify-center">
+                      <Mic className="w-8 h-8 text-muted-foreground/40" />
+                    </div>
+                  )}
+                </div>
+                <h4 className="font-bold text-sm">{speaker.name}</h4>
+                <p className="text-xs text-muted-foreground">{speaker.role}</p>
+                <p className="text-xs text-accent/70">{speaker.company}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-4">Interested in speaking? We'd love to hear from you.</p>
+            <Button asChild variant="outline" className="border-accent/40 bg-accent/5 hover:bg-accent/15">
+              <a href={`mailto:${SPONSOR_CONTACT_EMAIL}?subject=Speaker%20Proposal%20-%20AWS%20Community%20Day%20Ottawa%202026`}>
+                Submit a Talk Proposal <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* VOLUNTEERS */}
+      <section id="volunteers" className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <Heart className="w-12 h-12 mx-auto mb-6 text-accent" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">08 / Volunteers</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Help us make it happen.</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+              AWS Community Day Ottawa is 100% community-driven. We're looking for passionate volunteers to help with event logistics, registration, speaker support, and more. It's a great way to give back, build your network, and be part of something meaningful.
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 mb-10 text-left">
+              {[
+                { title: "Event Day Support", desc: "Help with registration, wayfinding, and attendee experience." },
+                { title: "Technical Support", desc: "Assist speakers with A/V setup and hackathon logistics." },
+                { title: "Community Outreach", desc: "Help spread the word and engage the local tech community." },
+              ].map(({ title, desc }) => (
+                <div key={title} className="p-6 rounded-xl bg-gradient-card border border-border">
+                  <h4 className="font-bold mb-2">{title}</h4>
+                  <p className="text-sm text-muted-foreground">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8">
+              <a href={`mailto:${SPONSOR_CONTACT_EMAIL}?subject=Volunteer%20Interest%20-%20AWS%20Community%20Day%20Ottawa%202026`}>
+                Sign Up to Volunteer <Heart className="ml-2 w-5 h-5" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-accent-glow" />
@@ -458,17 +581,17 @@ const Index = () => {
               <br />Don't miss it.
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Tickets are limited. Lock in your spot for the conference, the hackathon, or both.
+              Whether you're a seasoned cloud architect, DevOps practitioner, or AI enthusiast, this event is your opportunity to connect, learn, and build what's next.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 border-0 text-base h-14 px-8 shadow-glow animate-pulse-glow">
                 <a href={CONF_URL} target="_blank" rel="noopener noreferrer">
-                  Community Day Ticket <ArrowRight className="ml-2 w-5 h-5" />
+                  Register for Community Day <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-base h-14 px-8 border-accent/40 bg-accent/5 hover:bg-accent/15">
                 <a href={HACK_URL} target="_blank" rel="noopener noreferrer">
-                  Hackathon Entry
+                  Register for Hackathon
                 </a>
               </Button>
             </div>
