@@ -15,7 +15,7 @@ const HACK_URL = "https://www.eventbrite.com/e/devops-for-genai-hackathon-ottawa
 const VENUE = "Invest Ottawa, 7 Bayview Rd, Ottawa, ON";
 const EVENT_DATE = "August 21–22, 2026";
 
-const SPONSOR_DECK_URL = "/sponsor-deck.pdf";
+const SPONSOR_DECK_URL = "/sponsor-deck.pptx";
 const VOLUNTEER_FORM_URL = "https://forms.gle/YnbVmSmUGpV6PoFq6";
 const SPONSOR_CONTACT_EMAIL = "info@capitalcarbonconsulting.com";
 
